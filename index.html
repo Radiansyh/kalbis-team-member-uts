@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet Us</title>
+
+  <link rel="icon" type="image/svg" href="images/spark.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header reveal-fade">
+    <div class="container nav-inner">
+      <a href="#" class="logo-link">
+        <img src="images/logo.png" alt="Kalbis University" class="logo-img">
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#team" class="nav-link">The three of us</a>
+        <a href="#contact" class="nav-link nav-contact">
+          <span>Say hello</span>
+          <img src="images/arrow-up-right.svg" alt="" class="nav-arrow">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome / Hero Section -->
+    <section class="welcome-section">
+      <div class="container">
+        
+        <div class="edition-bar reveal-up">
+          <p class="eyebrow">KALBIS UNIVERSITY</p>
+        </div>
+
+        <div class="intro-grid">
+          <div class="headline-block">
+            <h1 class="hero-title">
+              <span class="line-open reveal-up delay-1">Lorem Ipsum</span>
+              <span class="line-close reveal-up delay-2"><em>Dolor sit amet</em></span>
+            </h1>
+          </div>
+
+          <div class="welcome-note reveal-up delay-2">
+            <img src="images/spark.svg" alt="" class="spark-icon" id="spark-icon">
+            <h3 class="welcome-greeting">
+              Hey, we’re <strong>Ardi</strong>, <strong>Rafli</strong> &amp; <strong>Nisa</strong>. Different interests. A shared table. A lot of ideas.
+            </h3>
+            <p class="welcome-desc">
+              This is our little corner of the internet &mdash; a place to share who we are, what we’re learning, and what we’re <mark>making together</mark>.
+            </p>
+            <!-- <p class="quote-line">
+              <q>Three different paths brought us to the same campus.</q>
+            </p> -->
+          </div>
+        </div>
+
+        <div class="intro-footer reveal-up delay-3">
+          <a href="#team" class="team-btn">
+            <span>Meet the three of us</span>
+            <img src="images/arrow-down.svg" alt="" class="btn-arrow">
+          </a>
+        </div>
+
+        <div class="disclosure-bar reveal-fade delay-3">
+          <span class="scroll-prompt">SCROLL TO GET TO KNOW US &darr;</span>
+        </div>
+
+      </div>
+      <div class="hero-backdrop-dim" id="hero-dim"></div>
+    </section>
+
+    <!-- Rising Curtain Wrapper that covers Hero on scroll down & uncovers on scroll up -->
+    <div class="curtain-wrapper" id="curtain-wrapper">
+      
+      <!-- Animated Rising Shapes at the top edge of the curtain -->
+      <div class="curtain-shapes" aria-hidden="true">
+        <div class="floating-shapes-layer" id="floating-shapes">
+          <span class="c-shape c-shape-circle"></span>
+          <span class="c-shape c-shape-pill"></span>
+          <span class="c-shape c-shape-ring"></span>
+          <span class="c-shape c-shape-star">&#10033;</span>
+          <span class="c-shape c-shape-dot"></span>
+        </div>
+        <svg class="curtain-wave-svg" viewBox="0 0 1440 160" preserveAspectRatio="none">
+          <path id="wave-back" fill="#bc2020" d="M0,160 Q720,160 1440,160 L1440,160 L0,160 Z"></path>
+          <path id="wave-mid" fill="#e5dfd0" d="M0,160 Q720,160 1440,160 L1440,160 L0,160 Z"></path>
+          <path id="wave-front" fill="#f6f3ea" d="M0,160 Q720,160 1440,160 L1440,160 L0,160 Z"></path>
+        </svg>
+      </div>
+
+      <!-- The Three of Us Section -->
+      <section id="team" class="team-section">
+      <div class="container">
+        
+        <div class="section-intro-grid">
+          <div class="section-heading reveal-up">
+            <p class="chapter-label">01 / THE THREE OF US</p>
+            <h2 class="section-title">A few familiar faces.</h2>
+          </div>
+          <blockquote class="intro-text reveal-up delay-1" cite="https://commonground.example">
+            Three different paths brought us to the same campus. Here’s a little of what makes each of us, <em>us</em>.
+          </blockquote>
+        </div>
+
+        <div class="profiles-grid">
+          
+          <!-- Card 1: Ardiansyah -->
+          <article class="student-profile reveal-up delay-1">
+            <div class="portrait-box">
+              <span class="profile-num">01</span>
+              <img src="images/ardiansyah.png" alt="Ardiansyah" class="portrait-img" loading="lazy">
+            </div>
+
+            <div class="profile-content">
+              <div class="identity">
+                <h4 class="personality">The visual thinker</h4>
+                <h3 class="name">Ardiansyah</h3>
+                <p class="course">Visual communication &middot; Year 2<sup>nd</sup></p>
+              </div>
+
+              <p class="biography">
+                I’m Maya, a design student who notices the lettering on every caf&eacute; window. I’m exploring how illustration and thoughtful typography can make everyday information feel more human. In our team, I turn messy ideas into sketches, layouts, and things we can actually point to. My notebook usually fills up before my <del>coffee</del> <ins>iced matcha</ins> gets cold.
+              </p>
+
+              <div class="skills-block">
+                <h5 class="block-label">WHAT I BRING</h5>
+                <div class="skill-tags">
+                  <span class="skill-pill">Illustration</span>
+                  <span class="skill-pill">Figma</span>
+                  <span class="skill-pill"><abbr title="User Interface & Experience">Visual storytelling</abbr></span>
+                </div>
+              </div>
+
+              <div class="hobbies-block">
+                <img src="images/camera.svg" alt="" class="hobby-icon">
+                <div class="hobby-info">
+                  <h5 class="block-label">AFTER CLASS</h5>
+                  <p class="hobby-desc">
+                    <b>Hobby:</b> Film photography, secondhand bookshops, and <i>sketching</i> people at the campus caf&eacute;.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Rafli Iyyad -->
+          <article class="student-profile reveal-up delay-2">
+            <div class="portrait-box">
+              <span class="profile-num">02</span>
+              <img src="images/rafli.png" alt="Rafli Iyyad" class="portrait-img" loading="lazy">
+            </div>
+
+            <div class="profile-content">
+              <div class="identity">
+                <h4 class="personality">The curious builder</h4>
+                <h3 class="name">Rafli Iyyad</h3>
+                <p class="course">Computer science &middot; Year 2<sup>nd</sup></p>
+              </div>
+
+              <p class="biography">
+                I’m Leo, and I like figuring out how things work &mdash; then trying to build my own version. I study computer science with a growing interest in accessible web experiences and creative coding. For this project, I connect the dots between our designs and the browser, test the small details, and ask a probably unreasonable number of questions.
+              </p>
+
+              <div class="skills-block">
+                <h5 class="block-label">WHAT I BRING</h5>
+                <div class="skill-tags">
+                  <span class="skill-pill"><abbr title="HyperText Markup Language">HTML</abbr> &amp; <abbr title="Cascading Style Sheets">CSS</abbr></span>
+                  <span class="skill-pill"><abbr title="JavaScript">JavaScript</abbr></span>
+                  <span class="skill-pill">Problem-solving</span>
+                </div>
+              </div>
+
+              <div class="hobbies-block">
+                <img src="images/headphones.svg" alt="" class="hobby-icon">
+                <div class="hobby-info">
+                  <h5 class="block-label">AFTER CLASS</h5>
+                  <p class="hobby-desc">
+                    <b>Hobby:</b> Bouldering, making overly specific playlists, and drinking <small>fresh</small> H<sub>2</sub>O.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Nisa -->
+          <article class="student-profile reveal-up delay-3">
+            <div class="portrait-box">
+              <span class="profile-num">03</span>
+              <img src="images/nisa.png" alt="Nisa" class="portrait-img" loading="lazy">
+            </div>
+
+            <div class="profile-content">
+              <div class="identity">
+                <h4 class="personality">The story collector</h4>
+                <h3 class="name">Nisa</h3>
+                <p class="course">Sociology &middot; Year 2<sup>nd</sup></p>
+              </div>
+
+              <p class="biography">
+                I’m Nora, a sociology student interested in the little rituals that make a place feel like home. I love <u>listening to people</u> and finding the story behind an ordinary moment. On our team, I help shape interview questions, make sense of our notes, and write copy inspired by <cite>The Sociological Imagination</cite>.
+              </p>
+
+              <div class="skills-block">
+                <h5 class="block-label">WHAT I BRING</h5>
+                <div class="skill-tags">
+                  <span class="skill-pill">Interviewing</span>
+                  <span class="skill-pill">Research</span>
+                  <span class="skill-pill">Writing</span>
+                </div>
+              </div>
+
+              <div class="hobbies-block">
+                <img src="images/audio-lines.svg" alt="" class="hobby-icon">
+                <div class="hobby-info">
+                  <h5 class="block-label">AFTER CLASS</h5>
+                  <p class="hobby-desc">
+                    <b>Hobby:</b> Campus radio, long walks without a destination, and weekend baking experiments.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Keep in Touch Section -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-grid">
+        
+        <div class="contact-left reveal-up">
+          <p class="chapter-label">03 / KEEP IN TOUCH</p>
+          <h2 class="contact-heading">Good conversations<br>start with hello.</h2>
+        </div>
+
+        <div class="contact-right reveal-up delay-1">
+          <p class="contact-desc">
+            An idea, a question, or a campus spot we should know about? We’d love to hear it.
+          </p>
+
+          <address class="contact-address-block">
+            <a href="mailto:hello@commonground.example" class="email-link">
+              <span>hello@commonground.example</span>
+              <img src="images/arrow-up-right.svg" alt="" class="email-arrow">
+            </a>
+            <p class="sample-note">
+              Sample contact address &mdash; replace with your team’s email.
+            </p>
+            <div class="bdo-preview">
+              <bdo dir="rtl">KAMPUS 2026</bdo>
+            </div>
+          </address>
+        </div>
+
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer reveal-fade">
+    <div class="container footer-inner">
+      <div class="site-credit">
+        <h6 class="site-name">common ground</h6>
+        <p class="project-credit">&copy; 2026 &middot; A fictional campus project</p>
+      </div>
+
+      <p class="signoff">Made together, one semester at a time.</p>
+
+      <a href="#" id="back-to-top" class="back-to-top">
+        <span>Back to top</span>
+        <img src="images/arrow-up.svg" alt="" class="top-arrow">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Lenis Smooth / Lazy Scroll Library -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
