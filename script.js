@@ -63,33 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typing Animation
   const biographies = document.querySelectorAll('.biography');
 
-  function createTypewriterSteps(sourceNode, targetParent, steps) {
-    sourceNode.childNodes.forEach((child) => {
+  function extractTokens(node, tokens) {
+    node.childNodes.forEach((child) => {
       if (child.nodeType === Node.TEXT_NODE) {
         const text = child.textContent.replace(/\s+/g, ' ');
-        if (!text) return;
-        const textNode = document.createTextNode('');
-        targetParent.appendChild(textNode);
         for (const char of text) {
-          steps.push({
-            char,
-            run: () => {
-              textNode.nodeValue += char;
-            }
-          });
+          tokens.push({ type: 'char', char });
         }
       } else if (child.nodeType === Node.ELEMENT_NODE) {
-        const cloneEl = document.createElement(child.tagName);
+        const attrs = {};
         Array.from(child.attributes).forEach((attr) => {
-          cloneEl.setAttribute(attr.name, attr.value);
+          attrs[attr.name] = attr.value;
         });
-        steps.push({
-          char: null,
-          run: () => {
-            targetParent.appendChild(cloneEl);
-          }
-        });
-        createTypewriterSteps(child, cloneEl, steps);
+        tokens.push({ type: 'open', tag: child.tagName.toLowerCase(), attrs });
+        extractTokens(child, tokens);
+        tokens.push({ type: 'close' });
       }
     });
   }
@@ -109,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     bio.appendChild(ghostSpan);
     bio.appendChild(typedSpan);
 
-    const steps = [];
-    createTypewriterSteps(ghostSpan, typedSpan, steps);
+    const tokens = [];
+    extractTokens(ghostSpan, tokens);
 
     const bioObserver = new IntersectionObserver(
       (entries, obs) => {
@@ -120,28 +108,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
               typedSpan.classList.add('is-typing');
-              let stepIdx = 0;
+              let tokenIdx = 0;
+              let currentContainer = typedSpan;
+
+              function applyToken(token) {
+                if (token.type === 'open') {
+                  const el = document.createElement(token.tag);
+                  if (token.attrs) {
+                    Object.keys(token.attrs).forEach((name) => {
+                      el.setAttribute(name, token.attrs[name]);
+                    });
+                  }
+                  currentContainer.appendChild(el);
+                  currentContainer = el;
+                } else if (token.type === 'close') {
+                  if (currentContainer.parentElement && currentContainer !== typedSpan) {
+                    currentContainer = currentContainer.parentElement;
+                  }
+                } else if (token.type === 'char') {
+                  const lastNode = currentContainer.lastChild;
+                  if (lastNode && lastNode.nodeType === Node.TEXT_NODE) {
+                    lastNode.nodeValue += token.char;
+                  } else {
+                    currentContainer.appendChild(document.createTextNode(token.char));
+                  }
+                }
+              }
 
               function typeNext() {
-                if (stepIdx >= steps.length) {
+                if (tokenIdx >= tokens.length) {
                   typedSpan.classList.remove('is-typing');
                   return;
                 }
 
-                // Run any instant HTML element wrapper steps first
-                while (stepIdx < steps.length && steps[stepIdx].char === null) {
-                  steps[stepIdx].run();
-                  stepIdx++;
+                // Apply any open/close tag tokens immediately at the current position
+                while (tokenIdx < tokens.length && tokens[tokenIdx].type !== 'char') {
+                  applyToken(tokens[tokenIdx]);
+                  tokenIdx++;
                 }
 
                 let currentChar = '';
-                if (stepIdx < steps.length) {
-                  currentChar = steps[stepIdx].char;
-                  steps[stepIdx].run();
-                  stepIdx++;
+                if (tokenIdx < tokens.length && tokens[tokenIdx].type === 'char') {
+                  currentChar = tokens[tokenIdx].char;
+                  applyToken(tokens[tokenIdx]);
+                  tokenIdx++;
                 }
 
-                if (stepIdx < steps.length) {
+                if (tokenIdx < tokens.length) {
                   let delay = 15 + Math.random() * 15;
                   
                   // Delay typing
